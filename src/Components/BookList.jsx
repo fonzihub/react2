@@ -22,7 +22,11 @@ const BookList = (props) => {
           .filter((b) => b.title.toLowerCase().includes(bar.toLowerCase()))
           .map((libro) => (
             <Col xs={12} md={4} key={libro.asin}>
-              <SingleBook img={libro.img} title={libro.title} />
+              <SingleBook
+                img={libro.img}
+                title={libro.title}
+                asin={libro.asin}
+              />
             </Col>
           ))}
       </Row>
