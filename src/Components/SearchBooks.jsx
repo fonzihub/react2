@@ -1,15 +1,34 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
-import fantasy from "../assets/data/fantasy.json";
+import allBooks from "../Components/allBooks";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useState } from "react";
+import Form from "react-bootstrap/Form";
 
-const AllTheBooks = () => {
+const SearchBooks = () => {
+  const [query, setQuery] = useState("");
+
+  const filteredBooks = allBooks.filter((book) =>
+    book.title.toLowerCase().includes(query.toLowerCase())
+  );
+
   return (
     <Container>
+      {/* search bar */}
+      <Form className="mb-3 mx-auto w-50">
+        <Form.Control
+          type="text"
+          className="text-center"
+          placeholder="Search for a book..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+      </Form>
+
       <Row>
-        {fantasy.map((book) => (
+        {filteredBooks.map((book) => (
           <Col xs={12} md={4} lg={3} className="mb-3">
             <Card key={book.asin} className="h-100">
               <Card.Img
@@ -37,4 +56,4 @@ const AllTheBooks = () => {
   );
 };
 
-export default AllTheBooks;
+export default SearchBooks;
