@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import CommentList from "./CommentList";
+import AddComment from "./AddComment";
 
 const endpoint = "https://striveschool-api.herokuapp.com/api/comments/";
 
@@ -41,6 +42,7 @@ const CommentArea = (props) => {
     <>
       <h4 className="text-center p-1">Comments</h4>
       <CommentList recensioni={review} />
+      <AddComment id={props.asin} />
     </>
   );
 };
